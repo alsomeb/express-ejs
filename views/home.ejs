@@ -1,0 +1,23 @@
+<%- include('partials/header'); -%> 
+<h1>Home</h1>
+
+<p><%= content %></p>
+<!-- SHOW FULL POST IF LESS THAN 100 LETTERS ELSE LINK TO FULL POST -->
+<% posts.forEach(function(post){ %>
+  <% const wordLength = post.content.split(' '); %>
+
+  <% if (wordLength.length > 100) {%>
+
+    <h1><%= post.title %></h1>
+    <p><%= post.content.substring(0,100) + " ..." %> 
+      <a href="posts/<%= post.title %>">Read More</a>
+    </p>
+
+  <%} else { %>
+    <h1><%= post.title %></h1>
+    <p><%= post.content %></p>
+  <% } %>
+  
+<% }); %>
+
+<%- include('partials/footer'); -%> 
